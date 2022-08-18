@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:16:28 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/18 12:29:45 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:38:16 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,24 @@
 # include "Get_next_line/get_next_line.h"
 # include "Libft/libft.h"
 
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-}	t_mlx;
-
 typedef struct s_CPE
 {
 	int	c;
 	int	p;
 	int	e;
 }	t_cpe;
+
+typedef struct s_pos
+{
+	int	c;
+	int	l;
+}	t_pos;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+}	t_mlx;
 
 typedef struct s_map
 {
@@ -60,11 +66,22 @@ int		ft_verif_one_line(char *str);
 int		ft_verif_line(char *str, int nb_c);
 int		ft_verif_map(char *file, t_map *map);
 
-//touche
-int		ft_key(int touche, void *game);
+//key
+int		ft_key(int key, t_game *game);
+void	ft_pos(t_map *map, t_pos *pos);
+void	ft_putmov(t_game *game, int l, int c, t_pos *pos);
+void	ft_mov(t_game *game, t_pos *pos, int key);
+
+//main
+void	image(int elem, int nb_l, int nb_c, t_mlx *mlx);
+void	ft_display(t_map *map, t_mlx *mlx);
+void	ft_game(t_map *map);
 
 //clear
 void	ft_mapclear(t_map *map);
 void	ft_destroy(t_game *game);
+
+
+void	ft_affiche(t_game *map);
 
 #endif

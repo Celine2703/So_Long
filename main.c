@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 13:41:29 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/18 12:18:02 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/18 15:35:19 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	ft_display(t_map *map, t_mlx *mlx)
 	int		nb_l;
 	int		nb_c;
 
-	mlx ->mlx = mlx_init();
-	mlx ->win = mlx_new_window(mlx ->mlx, 1900, 1000, "so_long");
 	nb_l = 0;
 	while (map ->map[nb_l])
 	{
@@ -58,8 +56,10 @@ void	ft_game(t_map *map)
 	t_game	game;
 
 	game.map = map;
-	ft_display(map, &mlx);
+	mlx.mlx = mlx_init();
+	mlx.win = mlx_new_window(mlx.mlx, 1900, 1000, "so_long");
 	game.mlx = &mlx;
+	ft_display(map, &mlx);
 	mlx_key_hook (mlx.win, ft_key, &game);
 	if (mlx.mlx)
 		mlx_loop(mlx.mlx);
