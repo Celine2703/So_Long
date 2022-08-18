@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear.c                                            :+:      :+:    :+:   */
+/*   ft_key.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 16:13:25 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/18 12:29:34 by cmartin-         ###   ########.fr       */
+/*   Created: 2022/08/15 11:34:12 by cmartin-          #+#    #+#             */
+/*   Updated: 2022/08/18 12:09:04 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_mapclear(t_map *map)
+int	ft_key(int touche, void *game)
 {
-	int	i;
-
-	map ->nb_l = 0;
-	map ->nb_c = 0;
-	if (!map ->map)
-		return ;
-	i = 0;
-	while (map ->map[i])
+	if (touche == 65307)
 	{
-		free(map ->map[i]);
-		i++;
+		ft_destroy(game);
+		return (touche);
 	}
-	free(map ->map);
-}
-
-void	ft_destroy(t_game *game)
-{
-	ft_mapclear(game ->map);
-	mlx_destroy_window(game ->mlx ->mlx, game ->mlx ->win);
-	mlx_destroy_display(game ->mlx ->mlx);
-	free(game ->mlx ->mlx);
-	exit(EXIT_SUCCESS);
+	printf("%dAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n\n", touche);
+	return (touche);
 }

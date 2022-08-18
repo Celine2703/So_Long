@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmartin- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 13:41:29 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/07/19 13:42:10 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/18 12:18:02 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,44 +28,55 @@ void	image(int elem, int nb_l, int nb_c, t_mlx *mlx)
 		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/collectible.xpm", &a, &a);
 	else
 		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/exit.xpm", &a, &a);
-	mlx_put_image_to_window(mlx ->mlx, mlx ->win, image,nb_c * 64, nb_l * 64);
+	mlx_put_image_to_window(mlx ->mlx, mlx ->win, image, nb_c * 64, nb_l * 64);
+	mlx_destroy_image(mlx ->mlx, image);
 }
 
-void	ft_display(t_map *map)
+void	ft_display(t_map *map, t_mlx *mlx)
 {
-	t_mlx	mlx;
 	int		nb_l;
 	int		nb_c;
-	
-	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, 1900, 1000, "so_long");
+
+	mlx ->mlx = mlx_init();
+	mlx ->win = mlx_new_window(mlx ->mlx, 1900, 1000, "so_long");
 	nb_l = 0;
 	while (map ->map[nb_l])
 	{
 		nb_c = 0;
 		while (map ->map[nb_l][nb_c])
 		{
-			image(map ->map[nb_l][nb_c], nb_l, nb_c, &mlx);
+			image(map ->map[nb_l][nb_c], nb_l, nb_c, mlx);
 			nb_c++;
 		}
 		nb_l++;
 	}
-	
-	mlx_loop(mlx.mlx);
+}
+
+void	ft_game(t_map *map)
+{
+	t_mlx	mlx;
+	t_game	game;
+
+	game.map = map;
+	ft_display(map, &mlx);
+	game.mlx = &mlx;
+	mlx_key_hook (mlx.win, ft_key, &game);
+	if (mlx.mlx)
+		mlx_loop(mlx.mlx);
 }
 
 int	main(int argc, char **argv)
 {
 	t_map	map;
-	
+
 	if (argc == 2)
 	{
-		if(!argv[1])
+		if (!argv[1])
 			return (write(2, "Error\nFichier absent\n", 21), 0);
 		else if (ft_verif_map(argv[1], &map))
 			return (0);
 		else
-			ft_display(&map);
+			ft_game(&map);
 	}
 	else
 		write(2, "Error\nIl faut un fichier\n", 24);

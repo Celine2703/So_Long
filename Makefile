@@ -1,4 +1,4 @@
-SRCS = ./Get_next_line/get_next_line.c ./Get_next_line/get_next_line_utils.c init.c verif_map.c main.c clear.c
+SRCS = ./Get_next_line/get_next_line.c ./Get_next_line/get_next_line_utils.c init.c verif_map.c main.c affiche_touche.c clear.c
 
 SRCSBONUS = 
 
@@ -34,6 +34,7 @@ re: fclean
 	make all
 
 $(NAME): $(OBJS) $(HEAD)
+	make -C ./minilibx-linux
 	make -C ./Libft
 	$(CC) $(SRCS) -Iincludes ./Libft/libft.a -Lminilibx-linux -lmlx -L/usr/lib -Iminilibx-linux -lXext -lX11 -lm -lz -o $@
 
