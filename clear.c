@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:13:25 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/19 12:18:20 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:34:24 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,10 @@ void	ft_destroy(t_game *game)
 	mlx_destroy_display(game ->mlx ->mlx);
 	free(game ->mlx ->mlx);
 	exit(EXIT_SUCCESS);
+}
+
+int	ft_cross(t_game *game)
+{
+	ft_destroy(game);
+	return (0);
 }

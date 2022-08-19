@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:16:28 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/19 12:18:37 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:48:23 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_map
 {
 	int		nb_l;
 	int		nb_c;
+	int		cpt;
 	char	**map;
 	t_cpe	cpe;
 }	t_map;
@@ -76,11 +77,13 @@ int		ft_key(int key, t_game *game);
 //main
 void	image(int elem, int nb_l, int nb_c, t_mlx *mlx);
 void	ft_display(t_map *map, t_mlx *mlx);
+void	ft_display_bis(t_map *map, t_mlx *mlx, t_pos *pos);
 void	ft_game(t_map *map);
 
 //clear
 void	ft_mapclear(t_map *map);
 void	ft_stop(t_map *map, void *mlx);
 void	ft_destroy(t_game *game);
+int		ft_cross(t_game *game);
 
 #endif

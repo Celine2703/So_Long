@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 11:34:12 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/19 11:46:59 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:57:32 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ void	ft_putmov(t_game *game, int l, int c, t_pos *pos)
 	t_map	*map;
 
 	map = game ->map;
+	if (map ->map[l][c] != '1')
+	{
+		ft_putnbr_fd(1, map ->cpt);
+		write(1, "\n", 1);
+	}
 	if (map ->map[l][c] == 'E')
 	{
 		if (!(map ->cpe.c))
@@ -90,6 +95,6 @@ int	ft_key(int key, t_game *game)
 	if (key == 65307)
 		ft_destroy(game);
 	ft_mov(game, &pos, key);
-	ft_display(game ->map, game ->mlx);
+	ft_display_bis(game ->map, game ->mlx, &pos);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 13:41:29 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/19 12:20:44 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:58:38 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,15 @@ void	ft_display(t_map *map, t_mlx *mlx)
 	}
 }
 
+void	ft_display_bis(t_map *map, t_mlx *mlx, t_pos *pos)
+{
+	image(map ->map[pos ->l][pos ->c], pos ->l, pos ->c, mlx);
+	image(map ->map[pos ->l - 1][pos ->c], pos ->l - 1, pos ->c, mlx);
+	image(map ->map[pos ->l + 1][pos ->c], pos ->l + 1, pos ->c, mlx);
+	image(map ->map[pos ->l][pos ->c - 1], pos ->l, pos ->c - 1, mlx);
+	image(map ->map[pos ->l][pos ->c + 1], pos ->l, pos ->c + 1, mlx);
+}
+
 void	ft_game(t_map *map)
 {
 	t_mlx	mlx;
@@ -62,6 +71,7 @@ void	ft_game(t_map *map)
 	int		y;
 
 	game.map = map;
+	game.map ->cpt = 0;
 	mlx.mlx = mlx_init();
 	if (!mlx.mlx)
 		return (ft_stop(map, mlx.mlx));
@@ -76,6 +86,7 @@ void	ft_game(t_map *map)
 	game.mlx = &mlx;
 	ft_display(map, &mlx);
 	mlx_key_hook (mlx.win, ft_key, &game);
+	mlx_hook(mlx.win, 17, 0, ft_cross, &game);
 	mlx_loop(mlx.mlx);
 }
 
