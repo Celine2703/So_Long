@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 11:34:12 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/19 11:27:06 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/19 11:46:59 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ void	ft_mov(t_game *game, t_pos *pos, int key)
 		ft_putmov(game, pos ->l + 1, pos ->c, pos);
 	else if (key == 'd' && pos ->c != map ->nb_c)
 		ft_putmov(game, pos ->l, pos ->c + 1, pos);
-	else
-		map ->map[pos ->l][pos ->c] = 'P';
 }
 
 int	ft_key(int key, t_game *game)

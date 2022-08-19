@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 13:41:29 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/19 11:36:04 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:20:44 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,18 @@ void	ft_game(t_map *map)
 {
 	t_mlx	mlx;
 	t_game	game;
+	int		x;
+	int		y;
 
 	game.map = map;
 	mlx.mlx = mlx_init();
 	if (!mlx.mlx)
+		return (ft_stop(map, mlx.mlx));
+	mlx_get_screen_size(mlx.mlx, &x, &y);
+	if (map ->nb_c * 64 > x || map ->nb_l * 64 > y)
 	{
-		ft_mapclear(game.map);
-		free(mlx.mlx);
-		return ;
+		write (2, "Error\nTaille non valide\n", 24);
+		return (ft_stop(map, mlx.mlx));
 	}
 	mlx.win = mlx_new_window(mlx.mlx,
 			64 * map ->nb_c, 64 * map ->nb_l, "so_long");

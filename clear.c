@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:13:25 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/18 12:29:34 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:18:20 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ void	ft_mapclear(t_map *map)
 		i++;
 	}
 	free(map ->map);
+}
+
+void	ft_stop(t_map *map, void *mlx)
+{
+	ft_mapclear(map);
+	mlx_destroy_display(mlx);
+	free(mlx);
 }
 
 void	ft_destroy(t_game *game)

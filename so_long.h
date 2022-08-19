@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:16:28 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/19 11:28:29 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:18:37 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	ft_game(t_map *map);
 
 //clear
 void	ft_mapclear(t_map *map);
+void	ft_stop(t_map *map, void *mlx);
 void	ft_destroy(t_game *game);
 
 #endif
