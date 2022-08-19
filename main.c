@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 13:41:29 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/18 15:35:19 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/19 11:36:04 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ void	image(int elem, int nb_l, int nb_c, t_mlx *mlx)
 	else if (elem == 'P')
 		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/right.xpm", &a, &a);
 	else if (elem == 'C')
-		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/collectible.xpm", &a, &a);
+		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/collect.xpm", &a, &a);
+	else if (elem == 'F')
+		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/b_right.xpm", &a, &a);
+	else if (elem == 'B')
+		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/blood.xpm", &a, &a);
 	else
 		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/exit.xpm", &a, &a);
 	mlx_put_image_to_window(mlx ->mlx, mlx ->win, image, nb_c * 64, nb_l * 64);
@@ -57,12 +61,18 @@ void	ft_game(t_map *map)
 
 	game.map = map;
 	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, 1900, 1000, "so_long");
+	if (!mlx.mlx)
+	{
+		ft_mapclear(game.map);
+		free(mlx.mlx);
+		return ;
+	}
+	mlx.win = mlx_new_window(mlx.mlx,
+			64 * map ->nb_c, 64 * map ->nb_l, "so_long");
 	game.mlx = &mlx;
 	ft_display(map, &mlx);
 	mlx_key_hook (mlx.win, ft_key, &game);
-	if (mlx.mlx)
-		mlx_loop(mlx.mlx);
+	mlx_loop(mlx.mlx);
 }
 
 int	main(int argc, char **argv)

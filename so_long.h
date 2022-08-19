@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:16:28 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/18 16:38:16 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/19 11:28:29 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,11 @@ int		ft_verif_line(char *str, int nb_c);
 int		ft_verif_map(char *file, t_map *map);
 
 //key
-int		ft_key(int key, t_game *game);
 void	ft_pos(t_map *map, t_pos *pos);
+void	ft_domov(char *map_av, char *map_ap, char av, char ap);
 void	ft_putmov(t_game *game, int l, int c, t_pos *pos);
 void	ft_mov(t_game *game, t_pos *pos, int key);
+int		ft_key(int key, t_game *game);
 
 //main
 void	image(int elem, int nb_l, int nb_c, t_mlx *mlx);
@@ -80,8 +81,5 @@ void	ft_game(t_map *map);
 //clear
 void	ft_mapclear(t_map *map);
 void	ft_destroy(t_game *game);
-
-
-void	ft_affiche(t_game *map);
 
 #endif

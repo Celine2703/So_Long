@@ -1,4 +1,4 @@
-SRCS = ./Get_next_line/get_next_line.c ./Get_next_line/get_next_line_utils.c init.c verif_map.c main.c ft_key.c clear.c test.c
+SRCS = ./Get_next_line/get_next_line.c ./Get_next_line/get_next_line_utils.c init.c verif_map.c main.c ft_key.c clear.c
 
 SRCSBONUS = 
 
