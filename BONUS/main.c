@@ -6,12 +6,11 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 13:41:29 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/27 12:59:56 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/27 17:40:18 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-#include "minilibx-linux/mlx.h"
+#include "so_long_bonus.h"
 
 void	image(int elem, int nb_l, int nb_c, t_mlx *mlx)
 {
@@ -24,14 +23,20 @@ void	image(int elem, int nb_l, int nb_c, t_mlx *mlx)
 		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/sol.xpm", &a, &a);
 	else if (elem == 'P')
 		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/right.xpm", &a, &a);
+	else if (elem == 'L')
+		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/left.xpm", &a, &a);
 	else if (elem == 'C')
 		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/collect.xpm", &a, &a);
 	else if (elem == 'F')
 		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/b_right.xpm", &a, &a);
+	else if (elem == BLOOD_LEFT)
+		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/b_left.xpm", &a, &a);
 	else if (elem == 'B')
 		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/blood.xpm", &a, &a);
-	else
+	else if (elem == 'O')
 		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/exit.xpm", &a, &a);
+	else
+		image = mlx_xpm_file_to_image(mlx ->mlx, "tiles/exit_c.xpm", &a, &a);
 	mlx_put_image_to_window(mlx ->mlx, mlx ->win, image, nb_c * 64, nb_l * 64);
 	mlx_destroy_image(mlx ->mlx, image);
 }

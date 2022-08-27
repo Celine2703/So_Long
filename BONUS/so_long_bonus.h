@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:16:28 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/27 13:16:16 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/27 17:56:52 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include "minilibx-linux/mlx.h"
-# include "Get_next_line/get_next_line.h"
-# include "Libft/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include "../Get_next_line/get_next_line.h"
+# include "../Libft/libft.h"
+
+# define RIGHT 'P'
+# define LEFT 'L'
+# define BLOOD 'B'
+# define BLOOD_RIGHT 'F'
+# define BLOOD_LEFT 'G'
 
 typedef struct s_CPE
 {
@@ -70,9 +76,14 @@ int		ft_verif_map(char *file, t_map *map);
 //cpt
 void	ft_cpt(t_map *map, int l, int c);
 
+//swap
+void	ft_do_left_right(t_game *game, int l, int c, t_pos *pos);
+void	ft_left_right(t_game *game, t_pos *pos, int key);
+void	ft_exit_open(t_game *game);
+
 //key
 void	ft_pos(t_map *map, t_pos *pos);
-void	ft_domov(char *map_av, char *map_ap, char av, char ap);
+void	ft_domov(char *map_av, char *map_ap, char av);
 void	ft_putmov(t_game *game, int l, int c, t_pos *pos);
 void	ft_mov(t_game *game, t_pos *pos, int key);
 int		ft_key(int key, t_game *game);

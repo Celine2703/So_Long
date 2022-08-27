@@ -6,11 +6,11 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:13:25 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/27 15:36:12 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/27 15:37:33 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_mapclear(t_map *map)
 {

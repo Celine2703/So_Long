@@ -6,11 +6,11 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 11:34:12 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/27 13:14:23 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/27 17:55:24 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_pos(t_map *map, t_pos *pos)
 {
@@ -23,7 +23,7 @@ void	ft_pos(t_map *map, t_pos *pos)
 		c = 0;
 		while (map ->map[l][c])
 		{
-			if (map ->map[l][c] == 'P' || map ->map[l][c] == 'F')
+			if (map ->map[l][c] == 'P' || map ->map[l][c] == 'F' || map ->map[l][c] == 'L' || map ->map[l][c] == BLOOD_LEFT)
 			{
 				pos ->c = c;
 				pos ->l = l;
@@ -35,10 +35,13 @@ void	ft_pos(t_map *map, t_pos *pos)
 	}
 }
 
-void	ft_domov(char *map_av, char *map_ap, char av, char ap)
+void	ft_domov(char *map_av, char *map_ap, char av)
 {
+	if (*map_av == 'P')
+		*map_ap = 'F';
+	else
+		*map_ap = BLOOD_LEFT;
 	*map_av = av;
-	*map_ap = ap;
 }
 
 void	ft_putmov(t_game *game, int l, int c, t_pos *pos)
@@ -47,25 +50,16 @@ void	ft_putmov(t_game *game, int l, int c, t_pos *pos)
 
 	map = game ->map;
 	ft_cpt(map, l, c);
-	if (map ->map[l][c] == 'E')
-	{
-		if (!(map ->cpe.c))
-			return (ft_putnbr_fd(++map ->cpt, 1), ft_destroy(game));
-	}
-	else if (map ->map[l][c] == '1')
+	if (map ->map[l][c] == 'O')
+		return (ft_putnbr_fd(++map ->cpt, 1), ft_destroy(game));
+	else if (map ->map[l][c] == '1' || map ->map[l][c] == 'E')
 		map ->map[pos ->l][pos ->c] = map ->map[pos ->l][pos ->c];
 	else if (map ->map[l][c] == 'C' && map ->cpe.c --)
-		ft_domov(&(map ->map[pos ->l][pos ->c]), &(map ->map[l][c]), '0', 'F');
+		ft_domov(&(map ->map[pos ->l][pos ->c]), &(map ->map[l][c]), '0');
 	else if (map ->map[l][c] == 'B')
-		ft_domov(&(map ->map[pos ->l][pos ->c]), &(map ->map[l][c]), '0', 'F');
-	else
-	{
-		map ->map[l][c] = 'P';
-		if (map ->map[pos ->l][pos ->c] == 'F')
-			map ->map[pos ->l][pos ->c] = 'B';
-		else
-			map ->map[pos ->l][pos ->c] = '0';
-	}
+		ft_domov(&(map ->map[pos ->l][pos ->c]), &(map ->map[l][c]), '0');
+	else if (map ->map[l][c] == '0')
+		ft_do_left_right(game, l, c, pos);
 }
 
 void	ft_mov(t_game *game, t_pos *pos, int key)
@@ -81,6 +75,9 @@ void	ft_mov(t_game *game, t_pos *pos, int key)
 		ft_putmov(game, pos ->l + 1, pos ->c, pos);
 	else if (key == 'd' && pos ->c != map ->nb_c)
 		ft_putmov(game, pos ->l, pos ->c + 1, pos);
+	ft_left_right(game, pos, key);
+	if (!(map ->cpe.c))
+		ft_exit_open(game);
 }
 
 int	ft_key(int key, t_game *game)
@@ -88,6 +85,7 @@ int	ft_key(int key, t_game *game)
 	t_pos	pos;
 
 	ft_pos(game ->map, &pos);
+	//printf("%i\n", pos.c);
 	if (key == 65307)
 		ft_destroy(game);
 	ft_mov(game, &pos, key);
