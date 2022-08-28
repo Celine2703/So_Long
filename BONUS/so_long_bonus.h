@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:16:28 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/27 17:56:52 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/28 15:28:53 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 # define BLOOD 'B'
 # define BLOOD_RIGHT 'F'
 # define BLOOD_LEFT 'G'
+# define YELLOW_RIGHT 'Y'
+# define YELLOW_LEFT 'Q'
+# define YELLOW_K 'K'
+# define YELLOW_KL 'H'
 
 typedef struct s_CPE
 {
@@ -79,19 +83,31 @@ void	ft_cpt(t_map *map, int l, int c);
 //swap
 void	ft_do_left_right(t_game *game, int l, int c, t_pos *pos);
 void	ft_left_right(t_game *game, t_pos *pos, int key);
+void	ft_knife(t_game *game, t_pos *pos, t_pos *pat);
+int		ft_case_ok(char c);
 void	ft_exit_open(t_game *game);
 
 //key
 void	ft_pos(t_map *map, t_pos *pos);
 void	ft_domov(char *map_av, char *map_ap, char av);
-void	ft_putmov(t_game *game, int l, int c, t_pos *pos);
-void	ft_mov(t_game *game, t_pos *pos, int key);
+int		ft_putmov(t_game *game, int l, int c, t_pos *pos);
+void	ft_mov(t_game *game, t_pos *pos, t_pos *pat, int key);
 int		ft_key(int key, t_game *game);
 
-//main
+//display
+void	*image_bonus(int elem, t_mlx *mlx);
 void	image(int elem, int nb_l, int nb_c, t_mlx *mlx);
 void	ft_display(t_map *map, t_mlx *mlx);
 void	ft_display_bis(t_map *map, t_mlx *mlx, t_pos *pos);
+
+//patrouille
+void	ft_pos_pat(t_map *map, t_pos *pos);
+char	ft_patmv(int mv, char pat);
+void	ft_patmov(char *map_av, char *map_ap, char av, char ap);
+void	ft_tourne(t_pos *pat, t_map *map);
+void	ft_patrouille(t_pos *pos, t_pos *pat, t_map *map);
+
+//main
 void	ft_game(t_map *map);
 
 //clear
@@ -99,5 +115,7 @@ void	ft_mapclear(t_map *map);
 void	ft_stop(t_map *map, void *mlx);
 void	ft_destroy(t_game *game);
 int		ft_cross(t_game *game);
+
+void	ft_affiche(t_game *game);
 
 #endif

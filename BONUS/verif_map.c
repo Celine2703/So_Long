@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:00:36 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/27 15:37:57 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/28 12:58:04 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_verif_line(char *str, int nb_c)
 	while (str[i])
 	{
 		if (str[i] != '1' && str[i] != '0' && str[i] != 'C'
-			&& str[i] != 'P' && str[i] != 'E')
+			&& str[i] != 'P' && str[i] != 'E' && str[i] != 'Y')
 			return (write(2, "Error\nElement inconnu\n", 22), 1);
 		i++;
 	}
