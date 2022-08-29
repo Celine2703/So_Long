@@ -31,7 +31,7 @@ clean:
 	rm -f $(OBJSBONUS)
 
 fclean: clean
-	make -C ./Libft fclean
+	rm -f ./Libft/libft.a
 	rm -f $(NAME)
 	rm -f $(NAMEBONUS)
 
