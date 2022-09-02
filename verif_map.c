@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmartin- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: celine <celine@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:00:36 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/07/20 10:00:38 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:51:28 by celine           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,5 @@ int	ft_verif_map(char *file, t_map *map)
 	if (ft_verif_cpe(map) || ft_verif_one_line(map ->map[0]) <= 1
 		|| ft_verif_one_line(map ->map[map ->nb_l - 1]) <= 1)
 		return (ft_mapclear(map), 1);
-	return (0);
+	return (ft_init_map(map), 0);
 }

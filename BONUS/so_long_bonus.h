@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celine <celine@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:16:28 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/28 15:28:53 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:33:54 by celine           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_game
 void	ft_init_cpe(t_map *map);
 void	ft_nb_l(int fd, t_map *map);
 char	**ft_recup_map(int fd, int nb_l);
+void	ft_init_map(t_map *map);
 
 //verif_map
 int		ft_ber(char *str);
@@ -78,7 +79,7 @@ int		ft_verif_line(char *str, int nb_c);
 int		ft_verif_map(char *file, t_map *map);
 
 //cpt
-void	ft_cpt(t_map *map, int l, int c);
+void	ft_cpt(t_game *game, int l, int c);
 
 //swap
 void	ft_do_left_right(t_game *game, int l, int c, t_pos *pos);

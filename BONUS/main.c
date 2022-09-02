@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celine <celine@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 13:41:29 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/28 10:39:12 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:47:45 by celine           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_game(t_map *map)
 			64 * map ->nb_c, 64 * map ->nb_l, "so_long");
 	game.mlx = &mlx;
 	ft_display(map, &mlx);
+	mlx_string_put(game.mlx ->mlx, game.mlx ->win, 3, 10, 0x00FF0000, "0");
 	mlx_key_hook (mlx.win, ft_key, &game);
 	mlx_hook(mlx.win, 17, 0, ft_cross, &game);
 	mlx_loop(mlx.mlx);

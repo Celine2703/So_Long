@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celine <celine@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:16:28 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/27 13:16:16 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:49:15 by celine           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_game
 void	ft_init_cpe(t_map *map);
 void	ft_nb_l(int fd, t_map *map);
 char	**ft_recup_map(int fd, int nb_l);
+void	ft_init_map(t_map *map);
 
 //verif_map
 int		ft_ber(char *str);

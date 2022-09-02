@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celine <celine@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 11:34:12 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/28 15:45:33 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:42:07 by celine           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ int	ft_putmov(t_game *game, int l, int c, t_pos *pos)
 	t_map	*map;
 
 	map = game ->map;
-	ft_cpt(map, l, c);
-	if (map ->map[l][c] == 'O' || map ->map[l][c] == 'Y')
-		return (ft_putnbr_fd(++map ->cpt, 1), ft_destroy(game), 1);
+	ft_cpt(game, l, c);
+	if (map ->map[l][c] == 'O' || map ->map[l][c] == 'Y'
+		|| map ->map[l][c] == 'Q' || map ->map[l][c] == 'K' || map ->map[l][c] == 'H')
+		return (ft_destroy(game), 1);
 	else if (map ->map[l][c] == '1' || map ->map[l][c] == 'E')
 		return (0);
 	else if ((map ->map[l][c] == 'C' && map->cpe.c--) || map->map[l][c] == 'B')
@@ -83,10 +84,10 @@ void	ft_mov(t_game *game, t_pos *pos, t_pos *pat, int key)
 	ft_left_right(game, pos, key);
 	if (pos ->c == -1)
 		return ;
-	if (map ->cpt % 2 && mov == 1)
+	if (map ->cpt % 2 && mov == 1 && pat ->c != -1)
 		ft_patrouille(pos, pat, map);
-	ft_knife(game, pos, pat);
-	ft_affiche(game);
+	if (pat ->c != -1)
+		ft_knife(game, pos, pat);
 	if (!(map ->cpe.c))
 		ft_exit_open(game);
 }
@@ -105,6 +106,7 @@ int	ft_key(int key, t_game *game)
 	if (pos.c == -1)
 		ft_destroy(game);
 	ft_display_bis(game ->map, game ->mlx, &pos);
-	ft_display_bis(game ->map, game ->mlx, &pat);
+	if (pat.c != -1)
+		ft_display_bis(game ->map, game ->mlx, &pat);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   patrouille.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celine <celine@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:03:00 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/28 15:12:18 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/08/30 18:36:45 by celine           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_pos_pat(t_map *map, t_pos *pos)
 		}
 		l++;
 	}
+	pos ->c = -1;
 }
 
 char	ft_patmv(int mv, char pat)

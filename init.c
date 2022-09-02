@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: celine <celine@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:14:33 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/18 14:10:52 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:48:52 by celine           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,25 @@ char	**ft_recup_map(int fd, int nb_l)
 	free(line);
 	line = 0;
 	return (map);
+}
+
+void	ft_init_map(t_map *map)
+{
+	int	i;
+	int	j;
+	int	p;
+
+	i = 0;
+	p = 0;
+	while (map ->map[i])
+	{
+		j = 0;
+		while (map ->map[i][j])
+		{
+			if (map ->map[i][j] == 'P' && p++ > 0)
+				map ->map[i][j] = '0';
+			j++;
+		}
+		i++;
+	}
 }
