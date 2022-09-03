@@ -6,7 +6,7 @@
 /*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 13:41:29 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/08/27 12:59:56 by cmartin-         ###   ########.fr       */
+/*   Updated: 2022/09/03 17:26:37 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ft_game(t_map *map)
 	game.map ->cpt = 0;
 	mlx.mlx = mlx_init();
 	if (!mlx.mlx)
-		return (ft_stop(map, mlx.mlx));
+		return (ft_mapclear(map));
 	mlx_get_screen_size(mlx.mlx, &x, &y);
 	if (map ->nb_c * 64 > x || map ->nb_l * 64 > y)
 	{

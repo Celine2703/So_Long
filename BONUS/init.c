@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: celine <celine@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:14:33 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/09/02 15:36:01 by celine           ###   ########.fr       */
+/*   Updated: 2022/09/03 16:20:16 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_init_map(t_map *map)
 	int	i;
 	int	j;
 	int	p;
-	int y;
+	int	y;
 
 	i = 0;
 	p = 0;

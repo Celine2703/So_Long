@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: celine <celine@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:00:36 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/09/02 15:18:18 by celine           ###   ########.fr       */
+/*   Updated: 2022/09/03 16:54:29 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	ft_verif_line(char *str, int nb_c)
 	}
 	i--;
 	if (str[i] != '1')
-		return (write(2, "Error\nIl faut un mur a doite\n", 29), 1);
+		return (write(2, "Error\nIl faut un mur a droite\n", 30), 1);
 	if (i + 1 != nb_c)
 		return (write(2, "Error\nLa map doit etre un rectangle\n", 36), 1);
 	return (0);
@@ -96,14 +96,14 @@ int	ft_verif_map(char *file, t_map *map)
 	fd = open(file, O_RDONLY);
 	map ->map = ft_recup_map(fd, map ->nb_l);
 	if (fd == -1 || !map ->map)
-		return (ft_mapclear(map), write(2, "Error\nFichier absent\n", 25), 1);
+		return (ft_mapclear(map), write(2, "Error\nFichier absent\n", 20), 1);
 	map ->nb_c = ft_verif_one_line(map ->map[0]);
 	ft_init_cpe(map);
 	i = 0;
-	while (map ->map[i])
+	while (map ->map[i] && map ->nb_c > 1)
 		if (ft_verif_line(map ->map[i++], map ->nb_c))
 			return (ft_mapclear(map), 1);
-	if (ft_verif_cpe(map) || ft_verif_one_line(map ->map[0]) <= 1
+	if (ft_verif_cpe(map) || map ->nb_c <= 1
 		|| ft_verif_one_line(map ->map[map ->nb_l - 1]) <= 1)
 		return (ft_mapclear(map), 1);
 	return (ft_init_map(map), 0);

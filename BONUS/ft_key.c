@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: celine <celine@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cmartin- <cmartin-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 11:34:12 by cmartin-          #+#    #+#             */
-/*   Updated: 2022/09/02 15:42:07 by celine           ###   ########.fr       */
+/*   Updated: 2022/09/03 16:21:32 by cmartin-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int	ft_putmov(t_game *game, int l, int c, t_pos *pos)
 
 	map = game ->map;
 	ft_cpt(game, l, c);
-	if (map ->map[l][c] == 'O' || map ->map[l][c] == 'Y'
-		|| map ->map[l][c] == 'Q' || map ->map[l][c] == 'K' || map ->map[l][c] == 'H')
+	if (map->map[l][c] == 'O' || map->map[l][c] == 'Y' || map->map[l][c] == 'Q'
+		|| map->map[l][c] == 'K' || map->map[l][c] == 'H')
 		return (ft_destroy(game), 1);
 	else if (map ->map[l][c] == '1' || map ->map[l][c] == 'E')
 		return (0);
