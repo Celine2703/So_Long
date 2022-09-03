@@ -1,6 +1,6 @@
 SRCS = ./Get_next_line/get_next_line.c ./Get_next_line/get_next_line_utils.c init.c verif_map.c main.c ft_key.c clear.c ft_cpt.c
 
-SRCSBONUS = ./Get_next_line/get_next_line.c ./Get_next_line/get_next_line_utils.c ./BONUS/init.c ./BONUS/verif_map.c ./BONUS/main.c ./BONUS/ft_key.c ./BONUS/clear.c ./BONUS/ft_cpt.c ./BONUS/swap.c ./BONUS/display.c ./BONUS/patrouille.c test.c
+SRCSBONUS = ./Get_next_line/get_next_line.c ./Get_next_line/get_next_line_utils.c ./BONUS/init.c ./BONUS/verif_map.c ./BONUS/main.c ./BONUS/ft_key.c ./BONUS/clear.c ./BONUS/ft_cpt.c ./BONUS/swap.c ./BONUS/display.c ./BONUS/patrouille.c
 
 OBJS = $(SRCS:%.c=%.o)
 
