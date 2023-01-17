@@ -25,9 +25,13 @@ Your map must be a rectangle closed by walls and contain at least 1 E, 1 C and 1
 example :
 
 1111111111111
+
 10010000000C1
+
 1000011111001
+
 1P0011E000001
+
 1111111111111
 
 
@@ -35,8 +39,8 @@ To play, use the keys "Z,Q,S,D" to move your player. You will be able to exit th
 
 how to run the so_long program :
 
-  make
-  ./so_long ./Maps/"name_of_file".ber
+     make
+    ./so_long ./Maps/"name_of_file".ber
 
 BONUS PART
 
@@ -44,7 +48,7 @@ An enemi can be added by putting a Y in the map. This enemi is moving and if you
 
 how to run the so_long_bonus program :
 
-  make bonus
-  ./so_long_bonus ./Maps/"name_of_file".ber
+     make bonus
+    ./so_long_bonus ./Maps/"name_of_file".ber
 
 clear all the created files ( .o etc.) by entering "make fclean".
