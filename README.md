@@ -25,13 +25,9 @@ Your map must be a rectangle closed by walls and contain at least 1 E, 1 C and 1
 example :
 
 1111111111111
-
 10010000000C1
-
 1000011111001
-
 1P0011E000001
-
 1111111111111
 
 
